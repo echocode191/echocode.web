@@ -321,8 +321,7 @@ section button:hover {
  
 <h1>⚡ EchoLink V1</h1>
 <p class="typewriter">Welcome To The page that teaches the world, silently.</p>
-   <p id="visitor-count" style="margin-top: 1rem; font-style: italic;"></p>
-
+ 
 <div style="margin-bottom: 1rem;">
   <input 
     type="text" 
@@ -1010,26 +1009,6 @@ function toggleMusic() {
   }
 </script>
 
-<script>
-  async function updateVisitorCount() {
-    try {
-      const namespace = "echocode_site";
-      const key = "visitor_count_v1";
-
-      const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
-      const data = await res.json();
-
-      document.getElementById("visitor-count").textContent =
-        `🧠 You are one of the ${data.value.toLocaleString()} people who have entered this site.`;
-    } catch (err) {
-      console.error("Visitor count failed:", err);
-      document.getElementById("visitor-count").textContent =
-        `🧠 Welcome. (Visitor count unavailable)`;
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", updateVisitorCount);
-</script>
 
 
 
