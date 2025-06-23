@@ -334,24 +334,39 @@ section button:hover {
     });
 </script>
 
-    <h1>⚡ EchoLink V1</h1>
-    <p class="typewriter">Welcome To The page that teaches the world, silently.</p>
-
-    <div style="margin-top: 1.5rem; margin-bottom: 3rem; border-left: 4px solid #58a6ff; padding-left: 1rem; ;">
-  <div><h3 style="color: purple;">🚀 Quick Access </h3> 👇click any of the topics below👇 </div>
- <ul style="list-style-type: none; padding-left: 0;">
-  <li><a href="#learn-to-code">🖥️ Learn to Code</a></li>
-  <li><a href="#grow-on-youtube">🎥 Grow on YouTube</a></li>
-  <li><a href="#build-business">💼 Build a Business</a></li>
-  <li><a href="#property-tips">🏠 Property Tips</a></li> <!-- NEW -->
-  <li><a href="#trader-tips">📊 Trader Tips</a></li>     <!-- NEW -->
-  <li><a href="#learn-anything">🧬 Learn How to Learn</a></li>
-  <li><a href="#life-os">🧠 Life OS</a></li>
-  <li><a href="#drop-zone">📦 Drop Zone</a></li>
-  <li><a href="#monetize">💰 Monetize</a></li>
-</ul>
-
+<h1>⚡ EchoLink V1</h1>
+<p class="typewriter">Welcome To The page that teaches the world, silently.</p>
+    
+<div style="margin-bottom: 1rem;">
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="🔍 Search topics..." 
+    style="width: 100%; padding: 0.5rem; font-family: 'Fira Code'; font-size: 1rem; border: 2px solid #58a6ff; border-radius: 5px;"
+    onkeyup="filterTopics()"
+  />
 </div>
+
+<div style="margin-top: 1.5rem; margin-bottom: 3rem; border-left: 4px solid #58a6ff; padding-left: 1rem;">
+  <div><h3 style="color: purple;">🚀 Quick Access </h3>👇click any of the topics below👇</div>
+  <ul id="topicList" style="list-style-type: none; padding-left: 0;">
+    <li><a href="#learn-to-code">🖥️ Learn to Code</a></li>
+    <li><a href="#grow-on-youtube">🎥 Grow on YouTube</a></li>
+    <li><a href="#build-business">💼 Build a Business</a></li>
+    <li><a href="#property-tips">🏠 Property Tips</a></li> <!-- NEW -->
+    <li><a href="#trader-tips">📊 Trader Tips</a></li>     <!-- NEW -->
+    <li><a href="#learn-anything">🧬 Learn How to Learn</a></li>
+    <li><a href="#life-os">🧠 Life OS</a></li>
+    
+  
+    <li><a href="#digital-money-moves">💸 How Digital Money Moves</a></li>
+    <li><a href="#smart-vs-tiktok">🧠 Why Smart People Still Fall for TikTok</a></li>
+
+    <li><a href="#drop-zone">📦 Drop Zone</a></li>
+    <li><a href="#monetize">💰 Monetize</a></li>
+  </ul>
+</div>
+
 
 <div class="glitch-divider"></div>
 
@@ -524,6 +539,43 @@ section button:hover {
 
 
 <div class="glitch-divider"></div>
+<section id="digital-money-moves">
+  <h2>💸 How Digital Money Moves (and Why It’s So Fast)</h2>
+  <p>Ever wonder how money moves from your phone to a friend across the country in seconds?</p>
+
+  <button onclick="toggleSection('dropContentSafeMoney', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: #1a1a1a; color: #58a6ff; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">See how it flows</button>
+
+  <div id="dropContentSafeMoney" style="display: none; margin-top: 1rem;">
+    <h3>🔗 The Chain Behind a “Send” Button</h3>
+    <ul>
+      <li>You tap “Send” in your app (like M-Pesa, PayPal, or Wise)</li>
+      <li>The app talks to a payment server → connected to a financial API</li>
+      <li>That API communicates with a bank or digital wallet</li>
+      <li>Seconds later, the money lands</li>
+    </ul>
+
+    <h3>⚙️ Why It’s So Fast</h3>
+    <ul>
+      <li>It’s not real cash moving — it’s data updates</li>
+      <li>Just numbers being moved across databases</li>
+      <li>Everything runs on backend code — called “payment rails”</li>
+    </ul>
+
+    <h3>🌍 Why This Matters Globally</h3>
+    <ul>
+      <li>Mobile money in Africa helped millions skip traditional banks</li>
+      <li>Developers and businesses can build custom payment flows using APIs</li>
+      <li>This is how modern fintech startups work</li>
+    </ul>
+
+    <h3>💡 Lesson from EchoCode</h3>
+    <ul>
+      <li>If you understand how money moves… you can build systems that move it better</li>
+    </ul>
+  </div>
+</section>
+
+<div class="glitch-divider"></div>
 
 <section id="property-tips">
   <h2>🏠 Property Management Tips</h2>
@@ -671,6 +723,42 @@ section button:hover {
 
 <div class="glitch-divider"></div>
 
+<section id="smart-vs-tiktok">
+  <h2>🧠 Why Smart People Still Fall for TikTok</h2>
+  <p>Even the most intelligent minds can’t out-think a machine that out-feels them.</p>
+
+  <button onclick="toggleSection('dropContentTikTok', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: navy; color: white; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Reveal the truth</button>
+
+  <div id="dropContentTikTok" style="display: none; margin-top: 1rem;">
+    <h3>🌀 The Algorithm Doesn’t Need to Be Smart</h3>
+    <ul>
+      <li>It doesn’t read books. It reads **your behavior**</li>
+      <li>It sees what you pause on, what you skip, and what you rewatch</li>
+      <li>Then it feeds you exactly what your *feelings* respond to</li>
+    </ul>
+
+    <h3>🎯 It Aims for Emotion, Not Logic</h3>
+    <ul>
+      <li>Smart people think in logic. TikTok plays in emotion</li>
+      <li>You may *know* it’s a trick — but your brain still takes the bait</li>
+      <li>That’s how attention is captured, held, monetized</li>
+    </ul>
+
+    <h3>🔁 You’re Not Watching TikTok — It’s Watching You</h3>
+    <ul>
+      <li>Every swipe sharpens its aim</li>
+      <li>Every scroll is feedback</li>
+      <li>Every like is a fingerprint</li>
+    </ul>
+
+    <h3>📘 EchoCode Insight</h3>
+    <ul>
+      <li>If you don’t design your feed, someone else will — and they’ll use your feelings to do it</li>
+    </ul>
+  </div>
+</section>
+
+<div class="glitch-divider"></div>
 
    <section id="life-os">
   <h2>Life OS: Reprogram Your Focus</h2>
@@ -819,7 +907,7 @@ section button:hover {
 </div>
 </div>
 
-  <!-- Music -->
+  
  <audio id="bgMusic"   loop style="display: none;">
 
   <source src="learn1.mp3" type="audio/mpeg" />
@@ -827,9 +915,7 @@ section button:hover {
 <button onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; background: grey; color: yellow; border: 1px solid #58a6ff; border-radius: 5px; padding: 0.4rem 1rem; font-family: 'Fira Code'; cursor: pointer; z-index: 1000;">
 play lofi music🎧
 </button>
-
-
-<!-- Scroll Buttons -->
+  
 <button class="scroll-btn up" onclick="scrollToTop()">⬆️</button>
 <button class="scroll-btn down" onclick="scrollToBottom()">⬇️</button>
 
@@ -961,6 +1047,24 @@ function toggleMusic() {
   }
 
   updateVisitorCount();
+</script>
+<script>
+  function filterTopics() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const ul = document.getElementById('topicList');
+    const li = ul.getElementsByTagName('li');
+
+    for (let i = 0; i < li.length; i++) {
+      const a = li[i].getElementsByTagName('a')[0];
+      const textValue = a.textContent || a.innerText;
+      if (textValue.toLowerCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
 </script>
 
 
