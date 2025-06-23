@@ -304,19 +304,16 @@ section button:hover {
   <button class="bt" onclick="toggleTheme()" style="position: fixed; top: 20px; right: 20px; background: grey; color: yellow; border: 1px solid #58a6ff; border-radius: 5px; padding: 0.4rem 1rem; font-family: 'Fira Code'; cursor: pointer; z-index: 1000;">
   switch theme
 </button>
-
-<div style="text-align:center; margin: 20px 0;">
-  <div style="max-width: 100%; min-width: 300px; margin: auto;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-6430778955815248"
-         data-ad-slot="9920631124"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+<div style="width: 100%; max-width: 360px; margin: 40px auto; text-align: center;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-6430778955815248"
+       data-ad-slot="9920631124"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 </div>
 
  <div class="container">
@@ -609,7 +606,7 @@ section button:hover {
 <div class="glitch-divider"></div>
 
   
-<div style="text-align:center; margin: 40px 0;">
+<div style="width: 100%; max-width: 360px; margin: 40px auto; text-align: center;">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-6430778955815248"
@@ -1011,7 +1008,7 @@ function toggleMusic() {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
 </script>
-<script>
+  <script>
   const namespace = "echocode_site";
   const key = "visitor_count_v1";
 
@@ -1019,9 +1016,10 @@ function toggleMusic() {
     try {
       const res = await fetch(`https://counterapi.dev/api/v1/counter/${namespace}/${key}/hit`);
 
-      // Ensure the response is valid JSON
-      if (!res.ok || !res.headers.get("content-type")?.includes("application/json")) {
-        throw new Error("Invalid response format");
+      const contentType = res.headers.get("content-type");
+      if (!res.ok || !contentType || !contentType.includes("application/json")) {
+        const errorText = await res.text();  // get full body for debugging
+        throw new Error("Invalid response format. Body: " + errorText);
       }
 
       const data = await res.json();
@@ -1036,7 +1034,6 @@ function toggleMusic() {
     }
   }
 
-  // Wait for DOM to be ready before updating count
   document.addEventListener("DOMContentLoaded", updateVisitorCount);
 </script>
 
