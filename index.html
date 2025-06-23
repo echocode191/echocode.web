@@ -267,7 +267,6 @@
 }
 
 
-/* 🔵 Make section toggle buttons more alive */
 section button {
   transition: all 0.3s ease;
   animation: pulse 3s infinite;
@@ -306,31 +305,36 @@ section button:hover {
   switch theme
 </button>
 
-
 <div style="text-align:center; margin: 20px 0;">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-6430778955815248"
-       data-ad-slot="9920631124"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  <div style="max-width: 100%; min-width: 300px; margin: auto;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6430778955815248"
+         data-ad-slot="9920631124"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 </div>
 
+
   <div class="container">
-    <p id="visitor-count" style="margin-top: 1rem; font-style: italic;"></p>
+ <p id="visitor-count" style="margin-top: 1rem; font-style: italic;"></p>
 
 <script>
-  fetch('https://counterapi.dev/api/hit/echolearn-web/visits')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('visitor-count').innerText = `👀 Visitors: ${data.value}`;
-    })
-    .catch(err => {
-      document.getElementById('visitor-count').innerText = `👀 Visitors: Unavailable`;
-    });
+  async function updateVisitorCount() {
+    try {
+      const res = await fetch('https://counterapi.dev/api/v1/counter/echocode_site/visitor_count_v1/hit');
+      const data = await res.json();
+      document.getElementById('visitor-count').innerText = `👀 Visitors: ${data.count}`;
+    } catch (err) {
+      console.warn("Visitor count failed:", err);
+    }
+  }
+
+  updateVisitorCount();
 </script>
 
 <h1>⚡ EchoLink V1</h1>
@@ -1022,17 +1026,16 @@ function toggleMusic() {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
 </script>
-
-<script>
+  <script>
   const namespace = "echocode_site";
   const key = "visitor_count_v1";
 
   async function updateVisitorCount() {
     try {
       // Increment +1 and get updated count
-      const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+      const res = await fetch(`https://counterapi.dev/api/v1/counter/${namespace}/${key}/hit`);
       const data = await res.json();
-      const count = data.value;
+      const count = data.count;
 
       // Update the DOM
       document.getElementById("visitor-count").textContent =
@@ -1046,6 +1049,8 @@ function toggleMusic() {
 
   updateVisitorCount();
 </script>
+
+
 <script>
   function filterTopics() {
     const input = document.getElementById('searchInput');
