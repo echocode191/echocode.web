@@ -320,6 +320,17 @@ section button:hover {
   <div class="container">
     <p id="visitor-count" style="margin-top: 1rem; font-style: italic;"></p>
 
+<script>
+  fetch('https://api.countapi.xyz/hit/echolearn-web/visits')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('visitor-count').innerText = `👀 Visitors: ${data.value}`;
+    })
+    .catch(err => {
+      document.getElementById('visitor-count').innerText = `👀 Visitors: Unavailable`;
+    });
+</script>
+
     <h1>⚡ EchoLink V1</h1>
     <p class="typewriter">Welcome To The page that teaches the world, silently.</p>
 
