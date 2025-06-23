@@ -319,27 +319,12 @@ section button:hover {
   </div>
 </div>
 
-
-  <div class="container">
- <p id="visitor-count" style="margin-top: 1rem; font-style: italic;"></p>
-
-<script>
-  async function updateVisitorCount() {
-    try {
-      const res = await fetch('https://counterapi.dev/api/v1/counter/echocode_site/visitor_count_v1/hit');
-      const data = await res.json();
-      document.getElementById('visitor-count').innerText = `👀 Visitors: ${data.count}`;
-    } catch (err) {
-      console.warn("Visitor count failed:", err);
-    }
-  }
-
-  updateVisitorCount();
-</script>
-
+ <div class="container">
+ 
 <h1>⚡ EchoLink V1</h1>
 <p class="typewriter">Welcome To The page that teaches the world, silently.</p>
-    
+    <p id="visitor-count" style="margin-top: 1rem; font-style: italic;"></p>
+
 <div style="margin-bottom: 1rem;">
   <input 
     type="text" 
@@ -599,7 +584,7 @@ section button:hover {
     <h3>📈 Income-Boosting Ideas</h3>
     <ul>
       <li>Offer WiFi or cleaning as extras</li>
-      <li>Install water meters and track usage</li>
+     <li>Install water meters and track usage</li>
       <li>Make payment easy — mobile, M-Pesa, online forms</li>
     </ul>
 
@@ -1026,28 +1011,33 @@ function toggleMusic() {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
 </script>
-  <script>
+<script>
   const namespace = "echocode_site";
   const key = "visitor_count_v1";
 
   async function updateVisitorCount() {
     try {
-      // Increment +1 and get updated count
       const res = await fetch(`https://counterapi.dev/api/v1/counter/${namespace}/${key}/hit`);
+
+      // Ensure the response is valid JSON
+      if (!res.ok || !res.headers.get("content-type")?.includes("application/json")) {
+        throw new Error("Invalid response format");
+      }
+
       const data = await res.json();
       const count = data.count;
 
-      // Update the DOM
       document.getElementById("visitor-count").textContent =
         `🧠 You are one of the ${count.toLocaleString()} people who have entered this site.`;
     } catch (err) {
       console.error("Visitor count failed:", err);
-      document.getElementById("visitor-count").textContent = 
+      document.getElementById("visitor-count").textContent =
         `🧠 Welcome. (Visitor count unavailable)`;
     }
   }
 
-  updateVisitorCount();
+  // Wait for DOM to be ready before updating count
+  document.addEventListener("DOMContentLoaded", updateVisitorCount);
 </script>
 
 
