@@ -283,7 +283,6 @@ section button:hover {
   text-shadow: 0 0 3px #0d1117;
 }
 
-/* 👾 Subtle animated pulse to attract clicks */
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0px rgba(88, 166, 255, 0.3);
@@ -324,7 +323,7 @@ section button:hover {
     <p id="visitor-count" style="margin-top: 1rem; font-style: italic;"></p>
 
 <script>
-  fetch('https://api.countapi.xyz/hit/echolearn-web/visits')
+  fetch('https://counterapi.dev/api/hit/echolearn-web/visits')
     .then(res => res.json())
     .then(data => {
       document.getElementById('visitor-count').innerText = `👀 Visitors: ${data.value}`;
@@ -1025,7 +1024,6 @@ function toggleMusic() {
 </script>
 
 <script>
-  // Replace this with a custom namespace+key (so others don’t interfere)
   const namespace = "echocode_site";
   const key = "visitor_count_v1";
 
