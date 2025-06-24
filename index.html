@@ -314,6 +314,22 @@ section button:hover {
   </style> 
 </head> 
 <body>
+  <div id="visitor-counter-wrapper" style="
+  width: 100%;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: -1rem;
+">
+  <p id="goatcounter-today" style="
+    color: #58a6ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    opacity: 0.9;
+  ">
+    👁️ Visitors in the past hour: 100+
+  </p>
+</div>
+
 <div class="glitch-divider"></div>
 
 <button onclick="toggleTheme()" style="
@@ -349,16 +365,6 @@ section button:hover {
 </script>
 
  <div class="container">
- <p id="goatcounter-today" style="
-  color: #58a6ff;
-  font-family: 'Fira Code', monospace;
-  font-size: 1rem;
-  text-align: center;
-  margin-top: 1.5rem;
-  margin-bottom: -1rem;
-">
-  👁️ Visitors in the past hour: 100+
-</p>
 
 
 <h1>⚡ EchoLink v1</h1>
@@ -1128,19 +1134,23 @@ section button:hover {
 
 </div>
 
-
-<div class="footer">
-<p id="goatcounter-today" style="
-  color: #58a6ff;
-  font-family: 'Fira Code', monospace;
-  font-size: 1rem;
+<div id="visitor-counter-wrapper" style="
+  width: 100%;
   text-align: center;
   margin-top: 1.5rem;
   margin-bottom: -1rem;
 ">
-  👁️ Visitors in the past hour: 100+
-</p>
+  <p id="goatcounter-today" style="
+    color: #58a6ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    opacity: 0.9;
+  ">
+    👁️ Visitors in the past hour: 100+
+  </p>
+</div>
 
+<div class="footer">
   ⚡ EchoCode | Built in silence, posted to the world.<br>
   © 2025 EchoCode. All rights reserved.<br>
   <a href="#contact" onclick="
