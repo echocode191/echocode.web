@@ -48,8 +48,11 @@
       overflow: hidden;
       border-right: .15em solid #58a6ff;
       white-space: nowrap;
-      animation: typing 5s steps(30, end ), blink .75s step-end infinite;
+      animation: typing 4s steps(30, end ), blink .75s step-end infinite;
       width: 0;
+      color:mediumspringgreen;
+      font-size: medium;
+
       
     }
 
@@ -287,7 +290,7 @@ section button:hover {
     box-shadow: 0 0 0px rgba(88, 166, 255, 0.3);
   }
   50% {
-    box-shadow: 0 0 12px rgba(88, 166, 255, 0.7);
+    box-shadow: 0 0 12px rgba(13, 23, 36, 0.7);
   }
   100% {
     box-shadow: 0 0 0px rgba(88, 166, 255, 0.3);
@@ -295,15 +298,43 @@ section button:hover {
 }
 
 
+.fade-section {
+  opacity: 0;
+  max-height: 0vh;
+  overflow: hidden;
+  transition: opacity 0.6s ease, max-height 0.8s ease;
+}
+
+.fade-section.show {
+  opacity: 1;
+  max-height: 100000rem;
+  margin-top: 1rem;
+}
 
   </style> 
 </head> 
 <body>
 <div class="glitch-divider"></div>
 
-  <button class="bt" onclick="toggleTheme()" style="position: fixed; top: 20px; right: 20px; background: grey; color: yellow; border: 1px solid #58a6ff; border-radius: 5px; padding: 0.4rem 1rem; font-family: 'Fira Code'; cursor: pointer; z-index: 1000;">
-  switch theme
+<button onclick="toggleTheme()" style="
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #21262d;
+  color: #f1e05a;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  padding: 0.5rem 1.2rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 1000;                            
+  transition: all 0.3s ease;
+">
+  🌓 Switch Theme
 </button>
+
 <div style="width: 100%; max-width: 360px; min-width: 320px; margin: 40px auto; text-align: center;">
   <ins class="adsbygoogle"
        style="display:block; width:100%; height:90px;"
@@ -319,39 +350,62 @@ section button:hover {
 
  <div class="container">
  
-<h1>⚡ EchoLink V1</h1>
-<p class="typewriter">Welcome To The page that teaches the world, silently.</p>
+
+<h1>⚡ EchoLink v1</h1>
+<p class="typewriter">We teach the world, silently.</p>
  
 <div style="margin-bottom: 1rem;">
   <input 
     type="text" 
     id="searchInput" 
     placeholder="🔍 Search topics..." 
-    style="width: 100%; padding: 0.5rem; font-family: 'Fira Code'; font-size: 1rem; border: 2px solid #58a6ff; border-radius: 5px;"
     onkeyup="filterTopics()"
+    style="
+      width: 100%;
+      padding: 0.7rem 1rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 1rem;
+      border: 2px solid #58a6ff;
+      border-radius: 10px;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      outline: none;
+      transition: border 0.3s ease;
+    "
+    onfocus="this.style.border='2px solid #1f6feb';" 
+    onblur="this.style.border='2px solid #58a6ff';"
   />
 </div>
 
-<div style="margin-top: 1.5rem; margin-bottom: 3rem; border-left: 4px solid #58a6ff; padding-left: 1rem;">
-  <div><h3 style="color: purple;">🚀 Quick Access </h3>👇click any of the topics below👇</div>
-  <ul id="topicList" style="list-style-type: none; padding-left: 0;">
-    <li><a href="#learn-to-code">🖥️ Learn to Code</a></li>
-    <li><a href="#grow-on-youtube">🎥 Grow on YouTube</a></li>
-    <li><a href="#build-business">💼 Build a Business</a></li>
-    <li><a href="#property-tips">🏠 Property Tips</a></li> <!-- NEW -->
-    <li><a href="#trader-tips">📊 Trader Tips</a></li>     <!-- NEW -->
-    <li><a href="#learn-anything">🧬 Learn How to Learn</a></li>
-    <li><a href="#life-os">🧠 Life OS</a></li>
-    
-  
-    <li><a href="#digital-money-moves">💸 How Digital Money Moves</a></li>
-    <li><a href="#smart-vs-tiktok">🧠 Why Smart People Still Fall for TikTok</a></li>
+<div  style="margin-top: 1.5rem; margin-bottom: 3rem; border-left: 4px solid #58a6ff; padding-left: 1rem;">
+  <div>
+    <h3 style="color: purple;">🚀 Quick Access</h3>
+    <p>👇Click any of the topics below👇</p>
+  </div>
 
-    <li><a href="#drop-zone">📦 Drop Zone</a></li>
-    <li><a href="#monetize">💰 Monetize</a></li>
+  <ul id="topicList" style="list-style-type: none; padding-left: 0; font-family: 'Fira Code';">
+    <li><a href="#learn-to-code" style="text-decoration: none; color: #58a6ff;">🖥️ Learn to Code</a></li>
+    <li><a href="#grow-on-youtube" style="text-decoration: none; color: #58a6ff;">🎥 Grow on YouTube</a></li>
+    <li><a href="#build-business" style="text-decoration: none; color: #58a6ff;">💼 Build a Business</a></li>
+
+    <div id="moreTopics" style="display: none;">
+      <li><a href="#property-tips" style="text-decoration: none; color: #58a6ff;">🏠 Property Tips</a></li>
+      <li><a href="#trader-tips" style="text-decoration: none; color: #58a6ff;">📊 Trader Tips</a></li>
+      <li><a href="#learn-anything" style="text-decoration: none; color: #58a6ff;">🧬 Learn How to Learn</a></li>
+      <li><a href="#life-os" style="text-decoration: none; color: #58a6ff;">🧠 Life OS</a></li>
+      <li><a href="#digital-money-moves" style="text-decoration: none; color: #58a6ff;">💸 How Digital Money Moves</a></li>
+      <li><a href="#smart-vs-tiktok" style="text-decoration: none; color: #58a6ff;">🧠 Why Smart People Still Fall for TikTok</a></li>
+      <li><a href="#drop-zone" style="text-decoration: none; color: #58a6ff;">📦 Drop Zone</a></li>
+      <li><a href="#monetize" style="text-decoration: none; color: #58a6ff;">💰 Monetize</a></li>
+    </div>
   </ul>
-</div>
 
+  <p style="margin-top: 1rem;">
+    <a href="javascript:void(0);" onclick="toggleQuickAccess()" style="color: #1f6feb; font-family: 'Fira Code'; text-decoration: underline;">
+      🔽 Show more
+    </a>
+  </p>
+</div>
 
 <div class="glitch-divider"></div>
 
@@ -361,9 +415,22 @@ section button:hover {
   <h2>Learn to Code. Like a Ghost.</h2>
   <p>HTML, CSS, JavaScript explained in EchoCode language. No boring tutorials. Just truth.</p>
 
-  <button onclick="toggleSection('codeContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Click me (to learn coding)</button>
+<button onclick="toggleSection('codeContent', this)" style="
+  margin: 1rem 0;
+  padding: 0.6rem 1.4rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #21262d;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  👻 Click me (to learn coding)
+</button>
 
-  <div id="codeContent" style="display: none; margin-top: 1rem;">
+  <div id="codeContent" class= "fade-section" style=" margin-top: 1rem;">
     <h3>🔥 HTML: The Skeleton</h3>
     <ul>
       <li>Start with the basics: <code>&lt;html&gt;, &lt;head&gt;, &lt;body&gt;</code></li>
@@ -424,9 +491,21 @@ section button:hover {
   <h2>Grow on YouTube. Break the Algorithm.</h2>
   <p>Use silence. Use sound. Tell stories. Post like you're hacking minds, not chasing views.</p>
 
-  <button onclick="toggleSection('ytContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Click me</button>
-
-  <div id="ytContent" style="display: none; margin-top: 1rem;">
+ <button onclick="toggleSection('ytContent', this)" style="
+  margin: 1rem 0;
+  padding: 0.6rem 1.4rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #21262d;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  🎥 Click me (Break the Algorithm)
+</button>
+  <div id="ytContent"  class="fade-section" style=" margin-top: 1rem;">
 
     <h3>🧠 The Mind Game</h3>
     <ul>
@@ -481,10 +560,22 @@ section button:hover {
   <section id="build-business">
   <h2>Build a Business. Quietly Take Over.</h2>
   <p>We show creators how to make movements, not just logos. Free tools coming soon.</p>
+<button onclick="toggleSection('bizContent', this)" style="
+  margin: 1rem 0;
+  padding: 0.6rem 1.4rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #21262d;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  💼 Click me (To Build Quiet Power)
+</button>
 
-  <button onclick="toggleSection('bizContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Click me </button>
-
-  <div id="bizContent" style="display: none; margin-top: 1rem;">
+  <div id="bizContent" class="fade-section" style=" margin-top: 1rem;">
     <h3>💼 Start Smart</h3>
     <ul>
       <li>Your audience is your asset. Build attention, then monetize.</li>
@@ -523,14 +614,28 @@ section button:hover {
 </section>
 
 
+
 <div class="glitch-divider"></div>
+
 <section id="digital-money-moves">
   <h2>💸 How Digital Money Moves (and Why It’s So Fast)</h2>
   <p>Ever wonder how money moves from your phone to a friend across the country in seconds?</p>
+<button onclick="toggleSection('dropContentSafeMoney', this)" style="
+  margin: 1rem 0;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #0d1117;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  💸 See How It Flows
+</button>
 
-  <button onclick="toggleSection('dropContentSafeMoney', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: #1a1a1a; color: #58a6ff; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">See how it flows</button>
-
-  <div id="dropContentSafeMoney" style="display: none; margin-top: 1rem;">
+  <div id="dropContentSafeMoney"  class="fade-section" style=" margin-top: 1rem;">
     <h3>🔗 The Chain Behind a “Send” Button</h3>
     <ul>
       <li>You tap “Send” in your app (like M-Pesa, PayPal, or Wise)</li>
@@ -565,10 +670,22 @@ section button:hover {
 <section id="property-tips">
   <h2>🏠 Property Management Tips</h2>
   <p>EchoCode meets real estate. These tips are for landlords, renters, and everyone in between.</p>
+<button onclick="toggleSection('propertyContent', this)" style="
+  margin: 1rem 0;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #0d1117;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  🏠 Click me (For Smart Landlord Tips)
+</button>
 
-  <button onclick="toggleSection('propertyContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Click me (for smart landlord tips)</button>
-
-  <div id="propertyContent" style="display: none; margin-top: 1rem;">
+  <div id="propertyContent"  class="fade-section" style=" margin-top: 1rem;">
     
     <h3>💼 Landlord Wisdom</h3>
     <ul>
@@ -623,9 +740,24 @@ section button:hover {
   <h2>📊 Trader Tips: Play the Game Smart</h2>
   <p>Markets aren’t kind. Be smarter, calmer, and emotionally bulletproof.</p>
 
-  <button onclick="toggleSection('traderContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Click me (trade like a ghost)</button>
+  <button onclick="toggleSection('traderContent', this)" style="
+  margin: 1rem 0;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #0d1117;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  📊 Click me (Trade Like a Ghost)
+</button>
 
-  <div id="traderContent" style="display: none; margin-top: 1rem;">
+
+
+  <div id="traderContent"  class="fade-section" style=" margin-top: 1rem;">
     <h3>🧠 Mindset First</h3>
     <ul>
       <li>Don’t chase. Let the trade come to you.</li>
@@ -670,10 +802,22 @@ section button:hover {
    <section id="learn-anything">
   <h2>Learn Anything. Even When Life Hits.</h2>
   <p>Learn when you're broke. Learn when you're stressed. Echo teaches real learning mindset.</p>
+<button onclick="toggleSection('learnContent', this)" style="
+  margin: 1rem 0;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #0d1117;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  🧠 Click me (to Learn Anything)
+</button>
 
-  <button onclick="toggleSection('learnContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Click me </button>
-
-  <div id="learnContent" style="display: none; margin-top: 1rem;">
+  <div id="learnContent"  class="fade-section" style=" margin-top: 1rem;">
     <h3>🧠 The Meta Skill: Learning</h3>
     <ul>
       <li>Don’t memorize. Build intuition by using what you learn.</li>
@@ -711,10 +855,22 @@ section button:hover {
 <section id="smart-vs-tiktok">
   <h2>🧠 Why Smart People Still Fall for TikTok</h2>
   <p>Even the most intelligent minds can’t out-think a machine that out-feels them.</p>
+<button onclick="toggleSection('dropContentTikTok', this)" style="
+  margin: 1rem 0;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #0d1117;
+  color: #ff69b4;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  🧠 Reveal the Truth (About TikTok)
+</button>
 
-  <button onclick="toggleSection('dropContentTikTok', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: navy; color: white; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Reveal the truth</button>
-
-  <div id="dropContentTikTok" style="display: none; margin-top: 1rem;">
+  <div id="dropContentTikTok"  class="fade-section" style=" margin-top: 1rem;">
     <h3>🌀 The Algorithm Doesn’t Need to Be Smart</h3>
     <ul>
       <li>It doesn’t read books. It reads **your behavior**</li>
@@ -749,9 +905,22 @@ section button:hover {
   <h2>Life OS: Reprogram Your Focus</h2>
   <p>We help creators and coders handle failure, fear, and mental overload with digital rituals.</p>
 
-  <button onclick="toggleSection('focusContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Click me </button>
+<button onclick="toggleSection('focusContent', this)" style="
+  margin: 1rem 0;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #0d1117;
+  color: #ff69b4;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+">
+  🧘 Unlock Focus Mode (Life OS)
+</button>
 
-  <div id="focusContent" style="display: none; margin-top: 1rem;">
+  <div id="focusContent"  class="fade-section" style=" margin-top: 1rem;">
     <h3>📱 Digital Minimalism</h3>
     <ul>
       <li>1 phone screen. 1 app row. No notifications.</li>
@@ -778,57 +947,123 @@ section button:hover {
 
 
 <section id="monetize">
-  <h2>💰 Monetize Every Skill You Learn</h2>
+  <h2>💰 Monetize Everything You Touch (Seriously)</h2>
+  <p>Every skill, every hustle, every small idea has a value. Here’s how to Echo it — and let money follow you.</p>
 
-  <button onclick="toggleSection('moneyContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">Click me</button>
+  <button onclick="toggleSection('moneyContent', this)" style="
+    margin: 1rem 0;
+    padding: 0.65rem 1.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    background-color: #0d1117;
+    color: #ff69b4;
+    border: 1px solid #58a6ff;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  ">
+    🚪 Open Full Monetization Guide
+  </button>
 
-  <div id="moneyContent" style="display: none; margin-top: 1rem;">
+  <div id="moneyContent"  class="fade-section" style=" margin-top: 1.5rem;">
 
-    <h3>🧱 Coding → Money</h3>
+    <h3>🧱 Coding / Tech → Money</h3>
     <ul>
-      <li>Build landing pages for clients (Fiverr, Upwork)</li>
-      <li>Make templates and sell on Gumroad or Etsy</li>
-      <li>Create mini tools, calculators, or blog sites and put ads</li>
+      <li>Build landing pages, portfolios, or blogs for clients</li>
+      <li>Sell templates or tiny tools on Gumroad, Etsy, or Payhip</li>
+      <li>Create AI wrappers, calculators, or Chrome extensions</li>
     </ul>
 
-    <h3>🎥 YouTube Growth → Money</h3>
+    <h3>🎥 Content Creation → Money</h3>
     <ul>
-      <li>Grow a niche channel → earn from Shorts bonus or AdSense</li>
-      <li>Promote affiliate tools (CapCut, music, AI editors)</li>
-      <li>Sponsor yourself: link to your products or templates</li>
-    </ul>
-
-    <h3>📦 Business Building → Money</h3>
-    <ul>
-      <li>Create 1-page tools or guides and sell for $1–$10</li>
-      <li>Use EchoCode strategy: teach → link → monetize</li>
+      <li>TikTok/YouTube Shorts → monetization or brand offers</li>
+      <li>Affiliate links: promote tools (CapCut, Notion, etc.)</li>
+      <li>Sell digital products via bio link</li>
     </ul>
 
     <h3>📚 Learning → Money</h3>
     <ul>
-      <li>Post your notes, make them downloadable, ask for tips</li>
-      <li>Document your journey (build in public)</li>
-      <li>Teach beginners once you’re 1 level ahead</li>
+      <li>Turn your notes into guides or small eBooks</li>
+      <li>Teach online (even if you're just 1 step ahead)</li>
+      <li>Use what you learn to build, then sell what you build</li>
+    </ul>
+
+    <h3>💼 Business Mindset → Money</h3>
+    <ul>
+      <li>Package a service: content, design, writing, strategy</li>
+      <li>Sell clarity, not chaos. Solve ONE pain clearly</li>
+      <li>Keep it simple: one-page offer, strong words, real delivery</li>
+    </ul>
+
+    <h3>🧠 Mental Energy → Money</h3>
+    <ul>
+      <li>Protect focus → it’s the currency behind every win</li>
+      <li>Quiet + Deep Work = Unfair Advantage</li>
+      <li>Build a Life OS → schedule your energy, not just your time</li>
+    </ul>
+
+    <h3>🇰🇪 Local Kenya Hustles → Money</h3>
+    <ul>
+      <li>Resell WiFi (WakiliBox, Faiba routers, hotspots)</li>
+      <li>Buy & flip thrift (Gikosh to Insta)</li>
+      <li>Offer mobile M-Pesa deposits / commission agents</li>
+      <li>Link to <a href="https://www.businessinkenya.co.ke" target="_blank"><strong>Business Ideas Kenya</strong></a></li>
+    </ul>
+
+    <h3>🧘 Hobbies → Money</h3>
+    <ul>
+      <li>Gaming? Stream or coach newbies</li>
+      <li>Writing? Turn rants into blog posts, then monetize</li>
+      <li>Cooking? Share quick recipes as PDFs or TikToks</li>
+    </ul>
+
+    <h3>📦 Platforms to Use</h3>
+    <ul>
+      <li><a href="https://gumroad.com" target="_blank">Gumroad</a> – sell digital products</li>
+      <li><a href="https://ko-fi.com" target="_blank">Ko-fi</a> – accept donations</li>
+      <li><a href="https://carrd.co" target="_blank">Carrd</a> – build beautiful 1-pagers</li>
+      <li><a href="https://notion.so" target="_blank">Notion</a> – run your brain, plan your drops</li>
     </ul>
 
     <h3>⚙️ Monetize EchoSite Directly</h3>
     <ul>
-      <li>Add AdSense if you have decent traffic</li>
-      <li>Put “Buy Me a Coffee” / Ko-fi / Patreon links</li>
-      <li>Make a private VIP PDF drop zone + charge entry</li>
+      <li>Apply for AdSense if traffic grows (custom domain helps)</li>
+      <li>Add “Buy Me a Coffee” / Patreon link</li>
+      <li>Create private content zones (e.g., VIP PDF drops)</li>
     </ul>
+
+    <h3>🧬 Echo Tips: Smart Monetization Rules</h3>
+    <ul>
+      <li>Don’t chase views, build value quietly</li>
+      <li>Document the journey → people pay for raw + real</li>
+      <li>If it saves time, solves pain, or feels good — you can sell it</li>
+    </ul>
+
+    <p style="margin-top: 2rem; font-style: italic; color: #999;">Echo doesn’t just teach skills. It shows how they pay you back.</p>
   </div>
 </section>
+
 
 <div class="glitch-divider"></div>
 <section id="drop-zone">
   <h2>Drop Zone: Tools, Tips, & Cyber Gifts</h2>
-
-  <button onclick="toggleSection('dropContent', this)" style="margin: 1rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: green; color: pink; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">
-    Click me (last message)
+  <button onclick="toggleSection('dropContent', this)" style="
+    margin: 1rem 0;
+    padding: 0.65rem 1.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    background-color: #0d1117;
+    color: #ff69b4;
+    border: 1px solid #58a6ff;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  " onmouseover="this.style.backgroundColor='#111827'" onmouseout="this.style.backgroundColor='#0d1117'">
+    📦 Reveal Drops (Last Message)
   </button>
 
-  <div id="dropContent" style="display: none; margin-top: 1rem;">
+
+  <div id="dropContent" class="fade-section" style=" margin-top: 1rem;">
     <ul>
       <li><a href="#" onclick="alert('🚧 Coming soon. Stay logged in. 🔐')">📄 [PDF] The Cyber Journey (Coming Soon)</a></li>
       <li><a href="#" onclick="alert('🚧 Buy Me a Coffee - Coming Soon! ☕')">☕ Support EchoCode (Coming Soon)</a></li>
@@ -839,13 +1074,25 @@ section button:hover {
   </div>
 </section>
 <div class="glitch-divider"></div>
+ 
 
-             <button onclick="toggleSection('contactPrivacy', this)" style="margin: 2rem 0; padding: 0.5rem 1rem; font-family: 'Fira Code'; background: #333; color: #58a6ff; border: 1px solid #58a6ff; border-radius: 5px; cursor: pointer;">
-  Click for Contact & Privacy
+<button onclick="toggleSection('contactPrivacy', this)" style="
+  margin: 2rem 0;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  background-color: #0d1117;
+  color: #58a6ff;
+  border: 1px solid #58a6ff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+" onmouseover="this.style.backgroundColor='#111827'" onmouseout="this.style.backgroundColor='#0d1117'">
+  🔐 Click for Contact & Privacy
 </button>
 
 
-<div id="contactPrivacy" style="display: none; margin-top: 2rem;">
+<div id="contactPrivacy" class="fade-section" style="margin-top: 2rem; border-top: 1px solid #30363d; padding-top: 1.5rem;">
 
   <section id="contact">
     <h2>📬 Contact EchoCode</h2>
@@ -887,7 +1134,8 @@ section button:hover {
   const div = document.getElementById('contactPrivacy');
   div.style.display = 'block';
   document.getElementById('privacy').scrollIntoView({ behavior: 'smooth' });
-">Privacy</a>
+
+"> 🔐 Privacy</a>
 
 </div>
  </div>
@@ -902,6 +1150,7 @@ play lofi music🎧
   
 <button class="scroll-btn up" onclick="scrollToTop()">⬆️</button>
 <button class="scroll-btn down" onclick="scrollToBottom()">⬇️</button>
+
 
 
   <script>
@@ -949,20 +1198,26 @@ function toggleMusic() {
 }
   </script>
   <script>
- function toggleSection(id, btn) {
-  const section = document.getElementById(id);
-  const isVisible = section.style.display === 'block';
-  section.style.display = isVisible ? 'none' : 'block';
-  btn.textContent = isVisible ? 'Click me' : 'Hide me';
+function toggleSection(id, btn) {
+    const section = document.getElementById(id);
+    section.classList.toggle('show');
+    // Optional button text toggle
+    if (btn) {
+      if (section.classList.contains('show')) {
+        btn.textContent = btn.textContent.replace("Click", "Hide");
+      } else {
+        btn.textContent = btn.textContent.replace("Hide", "Click");
+      }
+    }
+  }
 
-  // bounce effect on click
-  btn.style.transform = "scale(0.95)";
-  setTimeout(() => {
-    btn.style.transform = "scale(1)";
-  }, 150);
-}
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-
+  function scrollToBottom() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
   function toggleTheme() {
     document.body.classList.toggle("light-mode");
   }
@@ -975,22 +1230,18 @@ function toggleMusic() {
   }
 
 </script>
-
 <script>
-  // Stop auto scroll/jump caused by clicking links
-  document.querySelectorAll('a').forEach(link => {
+  // Smooth scroll for anchor links (without auto jump)
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      // Allow real navigation to another page
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const target = document.querySelector(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
   });
-});
 </script>
 
 <script>
@@ -1002,8 +1253,6 @@ function toggleMusic() {
     window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }
 </script>
-
-
 
 
 <script>
@@ -1022,6 +1271,24 @@ function toggleMusic() {
         li[i].style.display = "none";
       }
     }
+  }
+</script>
+
+<script>
+  let expanded = false;
+  function toggleQuickAccess() {
+    const more = document.getElementById('moreTopics');
+    const toggle = event.target;
+
+    if (!expanded) {
+      more.style.display = 'block';
+      toggle.innerHTML = '🔼 Show less';
+    } else {
+      more.style.display = 'none';
+      toggle.innerHTML = '🔽 Show more';
+    }
+
+    expanded = !expanded;
   }
 </script>
 
