@@ -1117,8 +1117,6 @@ section button:hover {
   </section>
 
 </div>
-<p id="visitor-count" style="font-style: italic; color: #999; margin-top: 2rem;"></p>
-
 <div class="glitch-divider"></div>
 <div class="footer">
   ⚡ EchoCode | Built in silence, posted to the world.<br>
@@ -1292,24 +1290,8 @@ function toggleSection(id, btn) {
     expanded = !expanded;
   }
 </script>
-
-<script>
-  const namespace = "echocode_site";
-  const key = "visitor_count_v1";
-
-  async function updateVisitorCount() {
-    try {
-      const res = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
-      const data = await res.json();
-      document.getElementById("visitor-count").innerText = `👁️ Visitors so far: ${data.value}`;
-    } catch (err) {
-      document.getElementById("visitor-count").innerText = "👁️ Visitor count unavailable.";
-    }
-  }
-
-  updateVisitorCount();
-</script>
-
+<script data-goatcounter="https://echolearn.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
