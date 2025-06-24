@@ -1296,24 +1296,51 @@ function toggleSection(id, btn) {
 <script data-goatcounter="https://echolearn.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 <script>
+  function toggleSection(id, btn) {
+    const section = document.getElementById(id);
+    section.classList.toggle('show');
+
+    if (btn) {
+      if (section.classList.contains('show')) {
+        btn.textContent = btn.textContent.replace("Click", "Hide");
+      } else {
+        btn.textContent = btn.textContent.replace("Hide", "Click");
+      }
+    }
+
+    // 👁️ Trigger visitor count ONLY when contactPrivacy is shown
+    if (id === "contactPrivacy" && section.classList.contains("show")) {
+      fetchTodayVisitors();
+    }
+  }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function scrollToBottom() {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
+
+  function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+  }
+
+  // 👁️ Fetch GoatCounter stat
   async function fetchTodayVisitors() {
     try {
       const res = await fetch("https://echolearn.goatcounter.com/api/v0/stats.json");
       const data = await res.json();
 
-      // Find today’s count
       const today = new Date().toISOString().split("T")[0];
       const todayCount = data.counts.find(day => day.date === today)?.count || 0;
 
-      document.getElementById("goatcounter-today").innerText = `👁️ Visitors today: ${todayCount}`;
+      const counter = document.getElementById("goatcounter-today");
+      if (counter) {
+        counter.innerText = `👁️ Visitors today: ${todayCount}`;
+      }
     } catch (err) {
-      document.getElementById("goatcounter-today").innerText = "👁️ Visitors today: (unavailable)";
-      console.error("GoatCounter fetch failed:", err);
-    }
-  }
-
-  fetchTodayVisitors();
-</script>
+      const counter = document.getElementById("goatcounter-today");
 
 </body>
 </html>
