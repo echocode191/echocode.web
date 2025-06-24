@@ -1115,12 +1115,13 @@ section button:hover {
       <li>We respect your quiet. Always.</li>
     </ul>
   </section>
-<p id="goatcounter-today" style="color: #888; font-style: italic; margin-top: 2rem;">
-  👁️ Visitors today: ...
-</p>
 
 </div>
 <div class="glitch-divider"></div>
+   <p id="goatcounter-today" style="color: #888; font-style: italic; margin-top: 2rem;">
+  👁️ Visitors today: ...
+</p>
+
 <div class="footer">
   ⚡ EchoCode | Built in silence, posted to the world.<br>
   © 2025 EchoCode. All rights reserved.<br>
@@ -1295,38 +1296,7 @@ function toggleSection(id, btn) {
 </script>
 <script data-goatcounter="https://echolearn.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-<script>
-  function toggleSection(id, btn) {
-    const section = document.getElementById(id);
-    section.classList.toggle('show');
-
-    if (btn) {
-      if (section.classList.contains('show')) {
-        btn.textContent = btn.textContent.replace("Click", "Hide");
-      } else {
-        btn.textContent = btn.textContent.replace("Hide", "Click");
-      }
-    }
-
-    // 👁️ Trigger visitor count ONLY when contactPrivacy is shown
-    if (id === "contactPrivacy" && section.classList.contains("show")) {
-      fetchTodayVisitors();
-    }
-  }
-
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function scrollToBottom() {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  }
-
-  function toggleTheme() {
-    document.body.classList.toggle("light-mode");
-  }
-
-  // 👁️ Fetch GoatCounter stat
+  <script>
   async function fetchTodayVisitors() {
     try {
       const res = await fetch("https://echolearn.goatcounter.com/api/v0/stats.json");
@@ -1341,6 +1311,16 @@ function toggleSection(id, btn) {
       }
     } catch (err) {
       const counter = document.getElementById("goatcounter-today");
+      if (counter) {
+        counter.innerText = "👁️ Visitors today: (unavailable)";
+      }
+      console.error("GoatCounter fetch failed:", err);
+    }
+  }
+
+  // Fetch immediately since it's now visible
+  fetchTodayVisitors();
+</script>
 
 </body>
 </html>
