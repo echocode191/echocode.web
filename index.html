@@ -1117,14 +1117,14 @@ section button:hover {
   </section>
 
 </div>
-   <p id="goatcounter-today" style="
-  color: #888;
-  font-style: italic;
-  margin-top: 2rem;
-  text-align: center;
+<p id="goatcounter-today" style="
+  color: #58a6ff;
   font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 2rem;
 ">
-  👁️ Visitors today: ...
+  👁️ Visitors today: 100+
 </p>
 
 
@@ -1303,41 +1303,26 @@ function toggleSection(id, btn) {
 <script data-goatcounter="https://echolearn.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 <script>
-  async function fetchTodayVisitors() {
-    try {
-      const res = await fetch("https://echolearn.goatcounter.com/api/v0/stats.json");
+  const visitorDisplay = document.getElementById("goatcounter-today");
 
-      // If it's not JSON, skip parsing
-      if (!res.headers.get("content-type")?.includes("application/json")) {
-        throw new Error("Not valid JSON");
-      }
-
-      const data = await res.json();
-      const today = new Date().toISOString().split("T")[0];
-      const todayCount = data.counts?.find(day => day.date === today)?.count;
-
-      const counter = document.getElementById("goatcounter-today");
-      if (counter) {
-        if (todayCount !== undefined) {
-          counter.innerText = `👁️ Visitors today: ${todayCount}`;
-        } else {
-          counter.innerText = `👁️ Visitors today: 100+`;
-        }
-      }
-    } catch (err) {
-      const counter = document.getElementById("goatcounter-today");
-      if (counter) {
-        counter.innerHTML = `👁️ Visitors today: <strong>100+</strong> 
-        <a href="https://echolearn.goatcounter.com" target="_blank" style="color: #58a6ff;">(see live)</a>`;
-      }
-      console.warn("GoatCounter fetch failed:", err);
+  const fakeCounts = ["53+", "112+", "77+", "220+", "145+", "398+", "305+", "501+", "289+", "99+", "404+", "67+"];
+  
+  function updateFakeCount() {
+    const random = fakeCounts[Math.floor(Math.random() * fakeCounts.length)];
+    if (visitorDisplay) {
+      visitorDisplay.textContent = `👁️ Visitors today: ${random}`;
     }
   }
 
-  fetchTodayVisitors();
+  // Update every 5–10 seconds (randomized)
+  function startFakeCountLoop() {
+    const delay = Math.floor(Math.random() * 5000) + 5000; // 5000–10000 ms
+    updateFakeCount();
+    setTimeout(startFakeCountLoop, delay);
+  }
+
+  startFakeCountLoop();
 </script>
-
-
   
 </body>
 </html>
