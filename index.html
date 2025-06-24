@@ -1134,7 +1134,7 @@ section button:hover {
 
 </div>
 
-<div id="visitor-counter-wrapper" style="
+  <div id="visitor-counter-wrapper" style="
   width: 100%;
   text-align: center;
   margin-top: 1.5rem;
@@ -1149,7 +1149,7 @@ section button:hover {
     👁️ Visitors in the past hour: 100+
   </p>
 </div>
-
+   
 <div class="footer">
   ⚡ EchoCode | Built in silence, posted to the world.<br>
   © 2025 EchoCode. All rights reserved.<br>
@@ -1326,7 +1326,7 @@ function toggleSection(id, btn) {
         async src="//gc.zgo.at/count.js">
   </script>
 <script>
-  const visitorDisplay = document.getElementById("goatcounter-today");
+  const countSpans = document.querySelectorAll(".echo-visitor-count");
 
   const fakeCounts = [
     "53+", "112+", "77+", "220+", "145+",
@@ -1334,21 +1334,22 @@ function toggleSection(id, btn) {
     "404+", "67+", "310+", "480+", "123+"
   ];
 
-  function updateFakeCount() {
+  function updateSyncedVisitorCount() {
     const random = fakeCounts[Math.floor(Math.random() * fakeCounts.length)];
-    if (visitorDisplay) {
-      visitorDisplay.textContent = `👁️ Visitors in the past hour: ${random}`;
-    }
+    countSpans.forEach(span => {
+      span.textContent = random;
+    });
   }
 
-  function startFakeCountLoop() {
-    const delay = Math.floor(Math.random() * 5000) + 5000; // random 5–10s
-    updateFakeCount();
-    setTimeout(startFakeCountLoop, delay);
+  function loopCount() {
+    updateSyncedVisitorCount();
+    const delay = Math.floor(Math.random() * 5000) + 5000;
+    setTimeout(loopCount, delay);
   }
 
-  startFakeCountLoop();
+  loopCount();
 </script>
+
 
   
 </body>
