@@ -1115,6 +1115,9 @@ section button:hover {
       <li>We respect your quiet. Always.</li>
     </ul>
   </section>
+<p id="goatcounter-today" style="color: #888; font-style: italic; margin-top: 2rem;">
+  👁️ Visitors today: ...
+</p>
 
 </div>
 <div class="glitch-divider"></div>
@@ -1292,6 +1295,25 @@ function toggleSection(id, btn) {
 </script>
 <script data-goatcounter="https://echolearn.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script>
+  async function fetchTodayVisitors() {
+    try {
+      const res = await fetch("https://echolearn.goatcounter.com/api/v0/stats.json");
+      const data = await res.json();
+
+      // Find today’s count
+      const today = new Date().toISOString().split("T")[0];
+      const todayCount = data.counts.find(day => day.date === today)?.count || 0;
+
+      document.getElementById("goatcounter-today").innerText = `👁️ Visitors today: ${todayCount}`;
+    } catch (err) {
+      document.getElementById("goatcounter-today").innerText = "👁️ Visitors today: (unavailable)";
+      console.error("GoatCounter fetch failed:", err);
+    }
+  }
+
+  fetchTodayVisitors();
+</script>
 
 </body>
 </html>
