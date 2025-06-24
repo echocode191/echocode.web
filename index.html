@@ -349,7 +349,17 @@ section button:hover {
 </script>
 
  <div class="container">
- 
+ <p id="goatcounter-today" style="
+  color: #58a6ff;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: -1rem;
+">
+  👁️ Visitors in the past hour: 100+
+</p>
+
 
 <h1>⚡ EchoLink v1</h1>
 <p class="typewriter">We teach the world, silently.</p>
@@ -1117,18 +1127,20 @@ section button:hover {
   </section>
 
 </div>
+
+
+<div class="footer">
 <p id="goatcounter-today" style="
   color: #58a6ff;
   font-family: 'Fira Code', monospace;
   font-size: 1rem;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: -1rem;
 ">
-  👁️ Visitors today: 100+
+  👁️ Visitors in the past hour: 100+
 </p>
 
-
-<div class="footer">
   ⚡ EchoCode | Built in silence, posted to the world.<br>
   © 2025 EchoCode. All rights reserved.<br>
   <a href="#contact" onclick="
@@ -1301,28 +1313,33 @@ function toggleSection(id, btn) {
   }
 </script>
 <script data-goatcounter="https://echolearn.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+        async src="//gc.zgo.at/count.js">
+  </script>
 <script>
   const visitorDisplay = document.getElementById("goatcounter-today");
 
-  const fakeCounts = ["53+", "112+", "77+", "220+", "145+", "398+", "305+", "501+", "289+", "99+", "404+", "67+"];
-  
+  const fakeCounts = [
+    "53+", "112+", "77+", "220+", "145+",
+    "398+", "305+", "501+", "289+", "99+",
+    "404+", "67+", "310+", "480+", "123+"
+  ];
+
   function updateFakeCount() {
     const random = fakeCounts[Math.floor(Math.random() * fakeCounts.length)];
     if (visitorDisplay) {
-      visitorDisplay.textContent = `👁️ Visitors today: ${random}`;
+      visitorDisplay.textContent = `👁️ Visitors in the past hour: ${random}`;
     }
   }
 
-  // Update every 5–10 seconds (randomized)
   function startFakeCountLoop() {
-    const delay = Math.floor(Math.random() * 5000) + 5000; // 5000–10000 ms
+    const delay = Math.floor(Math.random() * 5000) + 5000; // random 5–10s
     updateFakeCount();
     setTimeout(startFakeCountLoop, delay);
   }
 
   startFakeCountLoop();
 </script>
+
   
 </body>
 </html>
