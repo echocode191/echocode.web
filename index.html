@@ -105,7 +105,9 @@
     }
 
     li {
-      color: red;
+      color: rgb(182, 124, 167);
+      font-weight: 500;
+      font-size: 1.15rem;
     }
 
 
@@ -185,22 +187,29 @@
 }
 
 .light-mode {
-  background: #f9f9f9;
-  color: #0d1117;
+  background: #f8f8f8;
+  color: #03eb49;
 }
 
 .light-mode .container {
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  color: #0d1117;
+  color: #111111;
+}
+.light-mode h3 {
+  color: #6d0c75;
 }
 
 .light-mode a {
-  color: #0056b3;
+  color: #346858;
+  
+}
+.light-mode li {
+  color: rgb(11, 17, 10);
 }
 
 .light-mode .glitch-divider {
-  background: linear-gradient(90deg, #0056b3, #f9f9f9, #0056b3);
+  background: linear-gradient(90deg, #fde50c, #f9f9f9, #0056b3);
 }
 
 .topnav {
@@ -279,7 +288,7 @@ section button:hover {
   transform: scale(1.05) rotate(-0.5deg);
   background-color: #8ecbff;
   color: #0d1117;
-  box-shadow: 0 0 15px #58a6ff, 0 0 30px #8ecbff;
+  box-shadow: 0 5 20px #58a6ff, 0 0 30px #8ecbff;
   font-weight: bold;
   letter-spacing: 0.5px;
   text-shadow: 0 0 3px #0d1117;
@@ -287,13 +296,13 @@ section button:hover {
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0px rgba(88, 166, 255, 0.3);
+    box-shadow: 0 0 0px rgba(52, 236, 6, 0.3);
   }
   50% {
-    box-shadow: 0 0 12px rgba(13, 23, 36, 0.7);
+    box-shadow: 0 0 12px rgba(45, 243, 5, 0.7);
   }
   100% {
-    box-shadow: 0 0 0px rgba(88, 166, 255, 0.3);
+    box-shadow: 0 0 0px rgba(252, 2, 189, 0.3);
   }
 }
 
@@ -302,18 +311,21 @@ section button:hover {
   opacity: 0;
   max-height: 0vh;
   overflow: hidden;
-  transition: opacity 0.6s ease, max-height 0.8s ease;
+  transition: opacity 2s ease, max-height 1s ease;
 }
 
 .fade-section.show {
   opacity: 1;
   max-height: 100000rem;
   margin-top: 1rem;
+
 }
 
   </style> 
 </head> 
 <body>
+
+
   <div id="visitor-counter-wrapper" style="
   width: 100%;
   text-align: center;
@@ -326,14 +338,14 @@ section button:hover {
     font-size: 1rem;
     opacity: 0.9;
   ">
-    👁️ Visitors in the past hour: <span class="echo-visitor-count">100+</span>
+    👀Visitors in the last 24hrs: <span class="echo-visitor-count">100+</span>
   </p>
 </div>
 
 
 <div class="glitch-divider"></div>
 
-<button onclick="toggleTheme()" style="
+<button onclick="toggleTheme()" class="button" style="
   position: fixed;
   top: 20px;
   right: 20px;
@@ -444,6 +456,7 @@ section button:hover {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+
 ">
   👻 Click me (to learn coding)
 </button>
@@ -1089,6 +1102,7 @@ section button:hover {
 <div class="glitch-divider"></div>
 <section id="drop-zone">
   <h2>Drop Zone: Tools, Tips, & Cyber Gifts</h2>
+  <p>This section reveals tools, tips, & cyber gifts powered by echocode</p>
   <button onclick="toggleSection('dropContent', this)" style="
     margin: 1rem 0;
     padding: 0.65rem 1.5rem;
@@ -1117,6 +1131,9 @@ section button:hover {
 </section>
 <div class="glitch-divider"></div>
  
+<section id="contact & privacy">
+  <h2>contact📩 & privacy 🔐</h2>
+    <p>you can find Echocode's contact and privacy policy by opening this section!</p>
 
 <button onclick="toggleSection('contactPrivacy', this)" style="
   margin: 2rem 0;
@@ -1131,8 +1148,10 @@ section button:hover {
   transition: all 0.3s ease;
 " onmouseover="this.style.backgroundColor='#111827'" onmouseout="this.style.backgroundColor='#0d1117'">
   🔐 Click for Contact & Privacy
+  
 </button>
 
+<section>
 
 <div id="contactPrivacy" class="fade-section" style="margin-top: 2rem; border-top: 1px solid #30363d; padding-top: 1.5rem;">
 
@@ -1144,8 +1163,6 @@ section button:hover {
       <li>No spam. No cold pitches. We reply like ghosts — only when it matters.</li>
     </ul>
   </section>
-
-  <div class="glitch-divider"></div>
 
   <section id="privacy">
     <h2>🔐 Privacy Policy</h2>
@@ -1171,7 +1188,7 @@ section button:hover {
     font-size: 1rem;
     opacity: 0.9;
   ">
-    👁️ Visitors in the past hour: <span class="echo-visitor-count">100+</span>
+    👀Visitors in the last 24 hours: <span class="echo-visitor-count">100+</span>
   </p>
 </div>
 
@@ -1180,16 +1197,16 @@ section button:hover {
   © 2025 EchoCode. All rights reserved.<br>
   <a href="#contact" onclick="
   event.preventDefault();
-  const div = document.getElementById('contactPrivacy');
+  const div = document.getElementById('contact');
   div.style.display = 'block';
-  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('contact').scrollIntoShowView({ behavior: 'smooth' });
 ">📬 Contact</a> | 
 
 <a href="#privacy" onclick="
   event.preventDefault();
-  const div = document.getElementById('contactPrivacy');
+  const div = document.getElementById('Privacy');
   div.style.display = 'block';
-  document.getElementById('privacy').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('privacy').showView({ behavior: 'smooth' });
 
 "> 🔐 Privacy</a>
 
@@ -1253,10 +1270,13 @@ function toggleMusic() {
   isMuted = !isMuted;
 }
   </script>
-  <script>
-function toggleSection(id, btn) {
+  <script>  
+    function toggleSection(id, btn) {
     const section = document.getElementById(id);
     section.classList.toggle('show');
+      const isVisible = section.style.display === 'block';
+  section.style.display = isVisible ? 'none' : 'block';
+  btn.textContent = isVisible ?'Explore again🔥 ' : 'Hide content';
     // Optional button text toggle
     if (btn) {
       if (section.classList.contains('show')) {
@@ -1317,16 +1337,17 @@ function toggleSection(id, btn) {
     const filter = input.value.toLowerCase();
     const ul = document.getElementById('topicList');
     const li = ul.getElementsByTagName('li');
-
+ 
     for (let i = 0; i < li.length; i++) {
       const a = li[i].getElementsByTagName('a')[0];
       const textValue = a.textContent || a.innerText;
       if (textValue.toLowerCase().indexOf(filter) > -1) {
         li[i].style.display = "";
-      } else {
+          } else {
         li[i].style.display = "none";
-      }
-    }
+      } 
+
+  }
   }
 </script>
 
@@ -1354,9 +1375,9 @@ function toggleSection(id, btn) {
   const countSpans = document.querySelectorAll(".echo-visitor-count");
 
   const fakeCounts = [
-    "53+", "112+", "77+", "220+", "145+",
-    "398+", "305+", "501+", "289+", "99+",
-    "404+", "67+", "310+", "480+", "123+"
+    "53+", "112+", "77+", "10+", "220+", "145+",
+    "398+", "305+", "501+🔥","1000+🔥", "289+", "99+",
+    "404+🔥", "67+", "310+", "2000+🔥", "480+", "123+"
   ];
 
   function updateSyncedVisitorCount() {
