@@ -467,11 +467,26 @@ section button:hover {
     </a>
   </p>
 </div>
-   <section style="background: #9fef00; color: #0d1117; text-align: center; padding: 1rem 1.5rem; font-family: 'Fira Code'; font-weight: bold;">
-  🚀 Launch Your Business Website in 48hrs! —
-  <a href="echobuiz-loader.html" style="color: #0d1117; text-decoration: underline;">
+<section style="background: #9fef00; color: #0d1117; text-align: center; padding: 1rem 1.5rem; font-family: 'Fira Code'; font-weight: bold; position: relative; overflow: hidden;">
+  <span style="animation: pulseText 1.5s infinite ease-in-out;">🚀 Launch Your Business Website in 48hrs!</span> —
+  <a href="echobuiz-loader.html" style="color: #0d1117; text-decoration: underline; transition: color 0.3s;" onmouseover="this.style.color='#1f1f1f'" onmouseout="this.style.color='#0d1117'">
     Visit EchoBuiz Now
   </a>
+
+  <style>
+    @keyframes pulseText {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.03); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 500px) {
+      section {
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem;
+      }
+    }
+  </style>
 </section>
 
 <div class="glitch-divider"></div>
