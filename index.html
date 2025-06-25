@@ -467,26 +467,74 @@ section button:hover {
     </a>
   </p>
 </div>
-<section style="background: #9fef00; color: #0d1117; text-align: center; padding: 1rem 1.5rem; font-family: 'Fira Code'; font-weight: bold; position: relative; overflow: hidden;">
-  <span style="animation: pulseText 1.5s infinite ease-in-out;">🚀 Launch Your Business Website in 48hrs!</span> —
-  <a href="echobuiz-loader.html" style="color: #0d1117; text-decoration: underline; transition: color 0.3s;" onmouseover="this.style.color='#1f1f1f'" onmouseout="this.style.color='#0d1117'">
-    Visit EchoBuiz Now
-  </a>
+<section id="launchBanner" style="color: #0d1117; text-align: center; padding: 1rem 1.5rem; font-family: 'Fira Code'; font-weight: bold; position: relative; overflow: hidden;">
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem;">
+    <span style="animation: pulseDot 1s infinite;">🟢</span>
+    <span style="animation: pulseText 1.5s infinite ease-in-out;">🚀 Launch Your Business Website in 48hrs!</span>
+    <span id="countdown" style="background: #0d1117; color: #9fef00; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.9rem;">
+      ⏳ 48:00:00
+    </span>
+    —
+    <a href="echobuiz-loader.html" style="color: #0d1117; text-decoration: underline; transition: color 0.3s;" onmouseover="this.style.color='#1f1f1f'" onmouseout="this.style.color='#0d1117'">
+      Visit EchoBuiz Now
+    </a>
+  </div>
 
   <style>
+    #launchBanner {
+      background: linear-gradient(270deg, #9fef00, #bbff33, #9fef00);
+      background-size: 600% 600%;
+      animation: moveGradient 6s ease infinite;
+    }
+
+    @keyframes moveGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
     @keyframes pulseText {
       0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.03); }
+      50% { opacity: 0.7; transform: scale(1.04); }
       100% { opacity: 1; transform: scale(1); }
     }
 
-    @media (max-width: 500px) {
-      section {
+    @media (max-width: 600px) {
+      #launchBanner {
         font-size: 0.85rem;
         padding: 0.8rem 1rem;
       }
     }
   </style>
+
+  <script>
+    // Countdown to 48 hours from page load
+    let countdownTime = 48 * 60 * 60; // seconds
+
+    const countdownEl = document.getElementById('countdown');
+
+    function updateCountdown() {
+      const hours = String(Math.floor(countdownTime / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((countdownTime % 3600) / 60)).padStart(2, '0');
+      const seconds = String(countdownTime % 60).padStart(2, '0');
+
+      countdownEl.textContent = `⏳ ${hours}:${minutes}:${seconds}`;
+      countdownTime--;
+
+      if (countdownTime < 0) {
+        clearInterval(timer);
+        countdownEl.textContent = "🔥 Time's Up!";
+      }
+    }
+
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </section>
 
 <div class="glitch-divider"></div>
