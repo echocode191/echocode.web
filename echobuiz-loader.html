@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loading EchoBuiz...</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+    body {
+      margin: 0;
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Fira Code', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .glow {
+      color: #9fef00;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      animation: flicker 2s infinite;
+    }
+
+    .loader {
+      border: 4px solid #30363d;
+      border-top: 4px solid #58a6ff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader"></div>
+  <div class="glow">🔍 Loading EchoBuiz Templates...</div>
+  <div style="color:#8b949e;">Powering up global business tools...</div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "https://echobiz-shop.netlify.app";
+    }, 4000); // 4 seconds delay
+  </script>
+</body>
+</html>
